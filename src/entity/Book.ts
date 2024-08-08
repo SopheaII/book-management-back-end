@@ -1,0 +1,39 @@
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+  ManyToOne,
+} from "typeorm";
+import { User } from "./User";
+
+@Entity()
+export class Book {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  title: string;
+
+  @Column()
+  author: string;
+
+  @Column({ nullable: true })
+  genre: string;
+
+  @Column({ type: "date", nullable: true })
+  publishedDate: Date;
+
+  @Column({ default: true })
+  available: boolean;
+
+  @ManyToOne(() => User, { eager: true, onDelete: "CASCADE" })
+  createdBy: User;
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
+}
