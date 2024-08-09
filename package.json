@@ -29,6 +29,7 @@
     "watch": "tsc -w",
     "dev": "nodemon build/index.js",
     "start:dev": "concurrently \"tsc -w\" \"nodemon build/index.js\"",
-    "typeorm": "typeorm-ts-node-commonjs"
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migration": " npm run typeorm migration:run -- -d ./src/data-source.ts"
   }
 }
