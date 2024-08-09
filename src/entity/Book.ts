@@ -5,8 +5,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
+  OneToOne,
+  JoinColumn,
 } from "typeorm";
 import { User } from "./User";
+import { BookIssue } from "./BookIssue";
 
 @Entity()
 export class Book {
@@ -27,6 +30,10 @@ export class Book {
 
   @Column({ default: true })
   available: boolean;
+
+  @OneToOne(() => BookIssue, (bookIssue) => bookIssue.book)
+  @JoinColumn()
+  bookIssue: BookIssue;
 
   @ManyToOne(() => User, { eager: true, onDelete: "CASCADE" })
   createdBy: User;

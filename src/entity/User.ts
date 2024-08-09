@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from "typeorm";
+import { T } from "../common";
 
 @Entity({ name: "users" })
 export class User {
@@ -17,10 +18,13 @@ export class User {
   @Column({ nullable: false })
   email: string;
 
+  @Column({ nullable: true })
+  avatar: string;
+
   @Column({ nullable: false })
   password: string;
 
-  @Column({ default: "user" })
+  @Column({ enum: T.RoleEnum, default: T.RoleEnum[2] })
   role: string;
 
   @CreateDateColumn()

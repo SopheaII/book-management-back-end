@@ -2,6 +2,7 @@ import { AppDataSource } from "./data-source";
 import * as express from "express";
 import * as dotenv from "dotenv";
 import { Request, Response } from "express";
+import authRoute from "./router/auth";
 // import { userRouter } from "./routes/user.routes";
 // import { movieRouter } from "./routes/movie.routes";
 import "reflect-metadata";
@@ -11,7 +12,7 @@ const app = express();
 app.use(express.json());
 // app.use(errorHandler);
 // const { PORT = 3000 } = process.env;
-// app.use("/auth", userRouter);
+app.use("/api/auth", authRoute);
 // app.use("/api", movieRouter);
 
 app.get("*", (req: Request, res: Response) => {
