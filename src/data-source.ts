@@ -1,26 +1,8 @@
-// import "reflect-metadata";
-// import { DataSource } from "typeorm";
-// import { User } from "./entity/User";
-
-// export const AppDataSource = new DataSource({
-//   type: "postgres",
-//   host: "localhost",
-//   port: 5432,
-//   username: "postgres",
-//   password: "1111",
-//   database: "mydatabase",
-//   synchronize: true,
-//   logging: false,
-//   entities: [User],
-//   migrations: [],
-//   subscribers: [],
-// });
-
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 
 import * as dotenv from "dotenv";
-import { User } from "./entity/User";
+import { User } from "./entity/User.entity";
 import { Book } from "./entity/Book";
 import { BookIssue } from "./entity/BookIssue";
 
@@ -37,10 +19,12 @@ export const AppDataSource = new DataSource({
   password: DB_PASSWORD,
   database: DB_DATABASE,
 
-  synchronize: NODE_ENV === "dev" ? true : false,
+  synchronize: NODE_ENV === "dev" ? false : false,
   //logging logs sql command on the treminal
   logging: NODE_ENV === "dev" ? false : false,
-  entities: [User, Book, BookIssue],
-  migrations: [__dirname + "/migration/*.ts"],
+  entities: [`${__dirname}/**/entity/*.{ts,js}`],
+  migrations: [`${__dirname}/**/migrations/*.{ts,js}`],
+  // entities: [User, Book, BookIssue],
+  // migrations: [__dirname + "/migration/*.ts"],
   subscribers: [],
 });

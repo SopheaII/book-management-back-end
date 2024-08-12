@@ -8,10 +8,10 @@ import {
   OneToOne,
   JoinColumn,
 } from "typeorm";
-import { User } from "./User";
+import { User } from "./User.entity";
 import { BookIssue } from "./BookIssue";
 
-@Entity()
+@Entity({ name: "books" })
 export class Book {
   @PrimaryGeneratedColumn()
   id: number;
