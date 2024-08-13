@@ -24,10 +24,6 @@ export class User {
   @Column({ nullable: false })
   password: string;
 
-  // @Column({ enum: T.RoleEnum, default: "user" })
-  // role: string[];
-  // @Column("simple-array", { default: () => "user", nullable: false })
-  // role: string[]; // Store roles as a JSON array
   @Column("jsonb", {
     default: () => `'${JSON.stringify([T.RoleEnum[2]])}'`, // Default to an array containing a single role
     nullable: false,

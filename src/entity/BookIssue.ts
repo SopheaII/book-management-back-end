@@ -9,8 +9,8 @@ import { Book } from "./Book";
 
 @Entity({ name: "bookIssues" })
 export class BookIssue {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
   @Column()
   status: string;
