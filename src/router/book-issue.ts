@@ -2,47 +2,48 @@ import { Router } from "express";
 import { authentification } from "../middleware/auth.middleware";
 import { authorization } from "../middleware/authorization";
 import {
-  createBook,
-  deleteBook,
-  getAllBooks,
-  getBookById,
-  updateBook,
-} from "../controller/book";
+  createBookIssue,
+  deleteBookIssue,
+  findBookIssueById,
+  getBookIssues,
+  updateIssueBook,
+} from "../controller/book-issue";
 
 const router = Router();
 
 router.get(
-  "/all-books",
+  "/all-books-issues",
   authentification,
   authorization(["admin", "super-admin"]),
-  getAllBooks
+  getBookIssues
 );
 
 router.post(
-  "/create-book",
+  "/create-book-issue",
   authentification,
   authorization(["admin", "super-admin"]),
-  createBook
+  createBookIssue
 );
 
 router.put(
-  "/update-book/:id",
+  "/update-book-issue/:id",
   authentification,
   authorization(["admin", "super-admin"]),
-  updateBook
+  updateIssueBook
 );
 
 router.get(
-  "/get-book/:id",
+  "/get-book-issue/:id",
   authentification,
   authorization(["admin", "super-admin"]),
-  getBookById
+  findBookIssueById
 );
 
 router.delete(
-  "/delete-book/:id",
+  "/delete-book-issue/:id",
   authentification,
   authorization(["admin", "super-admin"]),
-  deleteBook
+  deleteBookIssue
 );
+
 export default router;

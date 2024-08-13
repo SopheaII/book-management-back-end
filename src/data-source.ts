@@ -18,6 +18,10 @@ export const AppDataSource = new DataSource({
   username: DB_USERNAME,
   password: DB_PASSWORD,
   database: DB_DATABASE,
+  connectTimeoutMS: 30000,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 
   synchronize: NODE_ENV === "dev" ? false : false,
   //logging logs sql command on the treminal

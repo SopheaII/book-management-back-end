@@ -5,6 +5,7 @@ import { Request, Response } from "express";
 import authRoute from "./router/auth";
 import userRoute from "./router/user";
 import bookRoute from "./router/book";
+import bookIssueRoute from "./router/book-issue";
 // import { userRouter } from "./routes/user.routes";
 // import { movieRouter } from "./routes/movie.routes";
 import "reflect-metadata";
@@ -13,11 +14,12 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(errorHandler);
+// app.use(errorHandler);
 // const { PORT = 3000 } = process.env;
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
 app.use("/api/book", bookRoute);
+app.use("/api/book-issue", bookIssueRoute);
 
 app.get("*", (req: Request, res: Response) => {
   res.status(505).json({ message: "Bad Request" });
