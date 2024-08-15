@@ -6,13 +6,13 @@ import authRoute from "./router/auth";
 import userRoute from "./router/user";
 import bookRoute from "./router/book";
 import bookIssueRoute from "./router/book-issue";
-// import { userRouter } from "./routes/user.routes";
-// import { movieRouter } from "./routes/movie.routes";
+import cors = require("cors");
 import "reflect-metadata";
 import { errorHandler } from "./middleware/error.middleware";
 dotenv.config();
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 // app.use(errorHandler);
 // const { PORT = 3000 } = process.env;
